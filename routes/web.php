@@ -13,13 +13,22 @@
 
 Route::get('/', function () {
     $result=\App\Event::get();
-    return view('welcome')->with('result',$result);
+    return view('pages.home')->with('result',$result);
 });
 
 
 Auth::routes();
 
+//Login start Here
+
+Route::get('/admin/login', 'LoginController@login');
+Route::post('/admin/login/check', 'LoginController@loginCheck');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/logout', 'LoginController@logout');
+//Login end Here
+
+
+
 Route::get('/pages/details/{id}', 'Controller@detail');
 Route::get('/pages/reg/{id}', 'Controller@reg');
 
@@ -37,7 +46,7 @@ Route::get('/event/participant/{id}', 'EventController@participant');
 //admin section participant
 Route::get('/participant/create', 'ParticipantController@create');
 Route::post('/participant/store', 'ParticipantController@store');
-Route::get('/participant/view', 'ParticipantController@show');
+Route::get('/participant/view/{id}', 'ParticipantController@show');
 Route::get('/participant/edit/{id}', 'ParticipantController@edit');
 Route::post('/participant/update', 'ParticipantController@update');
 Route::get('/participant/delete/{id}', 'ParticipantController@destroy');

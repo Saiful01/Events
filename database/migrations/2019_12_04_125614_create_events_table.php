@@ -17,11 +17,11 @@ class CreateEventsTable extends Migration
             $table->bigIncrements('event_id');
             $table->string('event_title');
             $table->text('event_details');
-            $table->string('event_date');
+            $table->dateTime('event_date');
             $table->string('event_venue');
             $table->boolean('is_paid')->default(false);
-            $table->string('event_fee');
-            $table->string('image');
+            $table->double('event_fee');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

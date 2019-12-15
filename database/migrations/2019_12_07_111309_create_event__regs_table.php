@@ -15,7 +15,7 @@ class CreateEventRegsTable extends Migration
     {
         Schema::create('event_regs', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('Event_id');
+            $table->unsignedBigInteger('event_id');
             $table->unsignedBigInteger('par_id');
             $table->boolean('is_paid')->default(false);
             $table->boolean('is_inside')->default(false);

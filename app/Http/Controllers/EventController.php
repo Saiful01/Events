@@ -4,39 +4,45 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function __construct()
     {
-        //
+        $this->middleware(function ($request, $next) {
+            if (!Auth::check()) {
+                return Redirect::to('/admin/login');
+            }
+            return $next($request);
+        });
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('admin.event.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
+
+        $validator = Validator::make($request->all(), [
+            'event_title' => 'required',
+            'event_details' => 'required',
+            'event_date' => 'required',
+            'event_venue' => 'required',
+            'event_fee' => 'required|numeric',
+
+        ]);
+        if ($validator->fails()) {
+            return back()->with('failed', "Check Required Filed");
+        }
+
 
         unset($request['_token']);
         //return $request->all();
@@ -46,23 +52,23 @@ class EventController extends Controller
             $image_name = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/eventimg');
             $image->move($destinationPath, $image_name);
-            $array=[
-                'event_title'=>$request['event_title'],
-                'event_details'=>$request['event_details'],
-                'event_date'=>$request['event_date'],
-                'event_venue'=>$request['event_venue'],
-                'is_paid'=>$request['is_paid'],
-                'event_fee'=>$request['event_fee'],
-                'image'=>$image_name,
+            $array = [
+                'event_title' => $request['event_title'],
+                'event_details' => $request['event_details'],
+                'event_date' => $request['event_date'],
+                'event_venue' => $request['event_venue'],
+                'is_paid' => $request['is_paid'],
+                'event_fee' => $request['event_fee'],
+                'image' => $image_name,
             ];
-        }else{
-            $array=[
-                'event_title'=>$request['event_title'],
-                'event_details'=>$request['event_details'],
-                'event_date'=>$request['event_date'],
-                'event_vanue'=>$request['event_vanue'],
-                'is_paid'=>$request['is_paid'],
-                'event_fee'=>$request['event_fee'],
+        } else {
+            $array = [
+                'event_title' => $request['event_title'],
+                'event_details' => $request['event_details'],
+                'event_date' => $request['event_date'],
+                'event_venue' => $request['event_venue'],
+                'is_paid' => $request['is_paid'],
+                'event_fee' => $request['event_fee'],
             ];
         }
 
@@ -70,7 +76,7 @@ class EventController extends Controller
         try {
             Event::create($array);
 
-            return back()->with('success', "Successfylly Saved");
+            return redirect()->to('/event/view')->with('success', "Successfully Saved");
         } catch (\Exception $exception) {
 
             return $exception->getMessage();
@@ -119,23 +125,23 @@ class EventController extends Controller
             $image_name = time() . '.' . $image->getClientOriginalExtension();
             $destinationPath = public_path('/eventimg');
             $image->move($destinationPath, $image_name);
-            $array=[
-                'event_title'=>$request['event_title'],
-                'event_details'=>$request['event_details'],
-                'event_date'=>$request['event_date'],
-                'event_vanue'=>$request['event_vanue'],
-                'is_paid'=>$request['is_paid'],
-                'event_fee'=>$request['event_fee'],
-                'image'=>$image_name,
+            $array = [
+                'event_title' => $request['event_title'],
+                'event_details' => $request['event_details'],
+                'event_date' => $request['event_date'],
+                'event_vanue' => $request['event_vanue'],
+                'is_paid' => $request['is_paid'],
+                'event_fee' => $request['event_fee'],
+                'image' => $image_name,
             ];
-        }else{
-            $array=[
-                'event_title'=>$request['event_title'],
-                'event_details'=>$request['event_details'],
-                'event_date'=>$request['event_date'],
-                'event_vanue'=>$request['event_vanue'],
-                'is_paid'=>$request['is_paid'],
-                'event_fee'=>$request['event_fee'],
+        } else {
+            $array = [
+                'event_title' => $request['event_title'],
+                'event_details' => $request['event_details'],
+                'event_date' => $request['event_date'],
+                'event_vanue' => $request['event_vanue'],
+                'is_paid' => $request['is_paid'],
+                'event_fee' => $request['event_fee'],
             ];
         }
 
@@ -174,6 +180,9 @@ class EventController extends Controller
 
     public function participant($id)
     {
+
+
+        return $id;
         $result = DB::table('event_regs')
             ->where('event_id', $id)
             ->leftjoin('participants', 'event_regs.par_id', '=', 'participants.par_id')

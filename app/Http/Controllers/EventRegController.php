@@ -13,95 +13,94 @@ class EventRegController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function insert(){
+    public function insert()
+    {
 
 
+    }
 
+    public
+    function index()
+    {
+        //
+    }
 
-}
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function create()
+    {
+        //
+    }
 
-public
-function index()
-{
-    //
-}
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function store(Request $request)
+    {
+        //
+    }
 
-/**
- * Show the form for creating a new resource.
- *
- * @return \Illuminate\Http\Response
- */
-public
-function create()
-{
-    //
-}
+    /**
+     * Display the specified resource.
+     *
+     * @param \App\Event_Reg $event_Reg
+     * @return \Illuminate\Http\Response
+     */
 
-/**
- * Store a newly created resource in storage.
- *
- * @param \Illuminate\Http\Request $request
- * @return \Illuminate\Http\Response
- */
-public
-function store(Request $request)
-{
-    //
-}
+    public
+    function show($id)
+    {
+        $result = DB::table('event_regs')
+            ->where('event_id', $id)
+            ->leftjoin('participants', 'event_regs.par_id', '=', 'participants.par_id')
+            /* ->leftjoin('events', 'event_regs.event_id', '=', 'events.event_id')*/
+            ->get();
+        return $result;
+        return view('admin.EventReg.view')->with('result', $result);
+    }
 
-/**
- * Display the specified resource.
- *
- * @param \App\Event_Reg $event_Reg
- * @return \Illuminate\Http\Response
- */
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param \App\Event_Reg $event_Reg
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function edit(Event_Reg $event_Reg)
+    {
+        //
+    }
 
-public
-function show($id)
-{
-    $result = DB::table('event_regs')
-        ->where('event_id', $id)
-        ->leftjoin('participants', 'event_regs.par_id', '=', 'participants.par_id')
-        /* ->leftjoin('events', 'event_regs.event_id', '=', 'events.event_id')*/
-        ->get();
-    return $result;
-    return view('admin.EventReg.view')->with('result', $result);
-}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Event_Reg $event_Reg
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function update(Request $request, Event_Reg $event_Reg)
+    {
+        //
+    }
 
-/**
- * Show the form for editing the specified resource.
- *
- * @param \App\Event_Reg $event_Reg
- * @return \Illuminate\Http\Response
- */
-public
-function edit(Event_Reg $event_Reg)
-{
-    //
-}
-
-/**
- * Update the specified resource in storage.
- *
- * @param \Illuminate\Http\Request $request
- * @param \App\Event_Reg $event_Reg
- * @return \Illuminate\Http\Response
- */
-public
-function update(Request $request, Event_Reg $event_Reg)
-{
-    //
-}
-
-/**
- * Remove the specified resource from storage.
- *
- * @param \App\Event_Reg $event_Reg
- * @return \Illuminate\Http\Response
- */
-public
-function destroy(Event_Reg $event_Reg)
-{
-    //
-}
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Event_Reg $event_Reg
+     * @return \Illuminate\Http\Response
+     */
+    public
+    function destroy(Event_Reg $event_Reg)
+    {
+        //
+    }
 }
