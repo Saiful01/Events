@@ -53,6 +53,15 @@ class ParticipantController extends Controller
             ];
             DB::table('event_regs')->insert($event_register_array);
 
+
+            //TODO:: PDF Generate
+
+           /* $pdf = PDF::loadView('pages.ticket2')->with(,'result),$result;
+            return $pdf->download('invoice.pdf');*/
+
+
+
+
             return back()->with('success', "Successfully Registered for this event");
 
 
@@ -85,9 +94,10 @@ class ParticipantController extends Controller
      * @param  \App\Participant $participant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Participant $participant)
+    public function edit($par_id)
     {
-        //
+        $result = Participant::where('par_id', $par_id)->first();
+        return view('admin.participant.edit')->with('result', $result);
     }
 
     /**
@@ -99,7 +109,27 @@ class ParticipantController extends Controller
      */
     public function update(Request $request, Participant $participant)
     {
-        //
+        unset($request['_token']);
+        $array = [
+            'par_name' => $request['par_name'],
+            'par_email' => $request['par_email'],
+            'par_phone' => $request['par_phone'],
+            'par_address' => $request['par_address'],
+
+        ];
+
+
+    // return  $request->all();
+try {
+
+Participant::where('par_id', $request['par_id'])->update($request->all());
+return back()->with('success', "Successfully Updated");
+
+} catch (\Exception $exception) {
+    return $exception->getMessage();
+
+    return back()->with('failed', $exception->getMessage());
+}
     }
 
     /**

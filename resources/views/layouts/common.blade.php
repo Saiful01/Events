@@ -14,22 +14,16 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="/">Event</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/"> <img class="logo" src="" height="40"> Events</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+    <div class="collapse navbar-collapse" id="navbar1">
+        <ul class="navbar-nav ml-auto">
 
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-        <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-            </li>
-
+                <a class="btn ml-2 btn-warning" href="">About</a></li>
         </ul>
     </div>
 </nav>
@@ -38,44 +32,51 @@
 
 
 <!-- Footer -->
-<section id="footer">
+<!-- Footer -->
+<!-- Footer -->
+<footer class="section footer-classic context-dark bg-image" style="background: #2d3246;">
     <div class="container">
-        <div class="row text-center text-xs-center text-sm-left text-md-left">
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                </ul>
+        <div class="row row-30">
+            <div class="col-md-4 col-xl-5">
+                <div class="pr-xl-4"><a class="brand" href="index.html"><img class="brand-logo-light" src="images/agency/logo-inverse-140x37.png" alt="" width="140" height="37" srcset="images/agency/logo-retina-inverse-280x74.png 2x"></a>
+                    <p>We are an award-winning creative agency, dedicated to the best result in web design, promotion, business consulting, and marketing.</p>
+                    <!-- Rights-->
+                    <p class="rights"><span>©  </span><span class="copyright-year">2019</span><span> </span><span>PixonLab</span><span>. </span><span>All Rights Reserved.</span></p>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                </ul>
+            <div class="col-md-4">
+                <h5>Contacts</h5>
+                <dl class="contact-list">
+                    <dt>Address:</dt>
+                    <dd>DIIT Ground floor,Panthapath</dd>
+                </dl>
+                <dl class="contact-list">
+                    <dt>email:</dt>
+                    <dd><a href="mailto:#">Pixonlab@gmail.com</a></dd>
+                </dl>
+                <dl class="contact-list">
+                    <dt>phones:</dt>
+                    <dd><a href="tel:#">++88</a> <span>or</span> <a href="tel:#"></a>
+                    </dd>
+                </dl>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-4">
-                <h5>Quick links</h5>
-                <ul class="list-unstyled quick-links">
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>About</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-                <ul class="list-unstyled list-inline social text-center">
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-                    <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-                </ul>
-            </div>
+            <div class="col-md-4 col-xl-3">
+                <h5>Links</h5>
+                <ul class="nav-list">
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Events</a></li>
 
+                </ul>
+            </div>
         </div>
     </div>
-</section>
+    <div class="row no-gutters social-container">
+        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-facebook"></span><span>Facebook</span></a></div>
+        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-instagram"></span><span>instagram</span></a></div>
+        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-twitter"></span><span>twitter</span></a></div>
+        <div class="col"><a class="social-inner" href="#"><span class="icon mdi mdi-youtube-play"></span><span>google</span></a></div>
+    </div>
+</footer>
 <!-- ./Footer -->
 </body>
 </html>

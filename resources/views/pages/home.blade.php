@@ -13,13 +13,13 @@
         <!-- The slideshow -->
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="/image/1.jpg" alt="First slide" height="375px">
+                <img class="d-block w-100" src="/image/1.jpg" alt="First slide" height="400px">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/image/2.jpg" alt="First slide" height="375px">
+                <img class="d-block w-100" src="/image/2.jpg" alt="First slide" height="400px">
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="/image/3.jpg" alt="First slide" height="375px">
+                <img class="d-block w-100" src="/image/3.jpg" alt="First slide" height="400px">
             </div>
         </div>
 

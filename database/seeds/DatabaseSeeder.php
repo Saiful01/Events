@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
             'email' => "memotiur@gmail.com",
             'password' => \Illuminate\Support\Facades\Hash::make('123456')
         ]);
+        \App\User::create([
+            'name' => "Saiful",
+            'email' => "saiful013101@gmail.com",
+            'password' => \Illuminate\Support\Facades\Hash::make('1234')
+        ]);
 
 
         // $this->call(UsersTableSeeder::class);

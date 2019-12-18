@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\App;
+
 Route::get('/', function () {
     $result=\App\Event::get();
     return view('pages.home')->with('result',$result);
@@ -49,9 +51,25 @@ Route::post('/participant/store', 'ParticipantController@store');
 Route::get('/participant/view/{id}', 'ParticipantController@show');
 Route::get('/participant/edit/{id}', 'ParticipantController@edit');
 Route::post('/participant/update', 'ParticipantController@update');
-Route::get('/participant/delete/{id}', 'ParticipantController@destroy');
+
 
 
 //admin section Event Registered
 Route::get('/EventReg/view', 'EventRegController@show');
+
+
+
+
+Route::get('/test', function(){
+
+
+    $pdf = PDF::loadView('pages.ticket2');
+    return $pdf->download('invoice.pdf');
+
+
+/*
+
+    $pdf->loadHTML('<h1>Test</h1>');
+    return $pdf->stream();*/
+});
 
