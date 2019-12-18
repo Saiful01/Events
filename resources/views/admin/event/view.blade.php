@@ -20,6 +20,7 @@
                 <thead>
                 <tr>
 
+                    <th>#</th>
                     <th>Title</th>
                   {{--  <th>Details</th>--}}
                     <th>Dates</th>
@@ -32,9 +33,10 @@
 
                 </tr>
                 </thead>
-
+                @php($i=1)
                 @foreach($result as $res)
                     <tr>
+                        <td>{{$i++}} </td>
                         <td>{{$res->event_title}} </td>
                       {{--  <td>{{$res->event_details}} </td>--}}
                         <td> {{$res->event_date}} </td>

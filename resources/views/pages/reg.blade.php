@@ -1,9 +1,12 @@
 @extends('layouts.common')
 @section('content')
     <div class="container register">
-        <div class="row">
+        <div class="row mt-5">
 
             <div class="card mx-auto">
+                <div class="card-header">
+                    <h1 class="text-success">Registration Form</h1>
+                </div>
 
                 <div class="card-body">
 
@@ -43,7 +46,7 @@
 
                                 <div class="form-group">
                                         <textarea placeholder="Address" type="text" style="border-radius: 15px"
-                                                  class="form-control" name="par_address"> </textarea>
+                                                  class="form-control" name="par_address">Address </textarea>
                                 </div>
                                 <button type=" submit" class="btn btn-primary">Registration</button>
                             </div>

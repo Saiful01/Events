@@ -49,7 +49,7 @@ Route::post('/participant/store', 'ParticipantController@store');
 Route::get('/participant/view/{id}', 'ParticipantController@show');
 Route::get('/participant/edit/{id}', 'ParticipantController@edit');
 Route::post('/participant/update', 'ParticipantController@update');
-Route::get('/participant/delete/{id}', 'ParticipantController@destroy');
+
 
 
 //admin section Event Registered

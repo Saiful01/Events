@@ -64,8 +64,9 @@
 
 </div>
 
-<div class="footer-area footer-bottom">
-    Developed By:
+<div class="footer fixed-bottom text-center bg-gray-dark">
+    <div > Developed By:PixonLab</div>
+
 </div>
 
 </body>

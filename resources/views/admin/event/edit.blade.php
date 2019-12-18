@@ -14,42 +14,71 @@
                 @endif
 
                 <form method="post" action="/event/update" enctype='multipart/form-data'>
-                    <div class="form-group">
-                        <label>Event Title:</label>
-                        <input type="text" class="form-control" name="event_title" value="{{$result->event_title}}">
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
-                        <input type="hidden" name="event_id" value="{{$result->event_id}}">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Title:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="event_title" value="{{$result->event_title}}">
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
+                            <input type="hidden" name="event_id" value="{{$result->event_id}}">
+                        </div>
                     </div>
 
-
-                    <div class="form-group">
-                        <label>Event details:</label>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Details:</label>
+                        </div>
+                        <div class="col-md-9">
                         <textarea type="text" class="form-control"
                                   name="event_details"> {{$result->event_details}} </textarea>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Event Date:</label>
-                        <input type="text" class="form-control" name="event_date" value=" {{$result->event_date}} ">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Date:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="event_date" value=" {{$result->event_date}} ">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Event Vanue:</label>
-                        <input type="text" class="form-control" name="event_venue" value=" {{$result->event_venue}} ">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Venue:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="event_venue"
+                                   value=" {{$result->event_venue}} ">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label>Payment:</label>
-                        <select class="form-control form-control-lg" name="is_paid">
-                            <option @if($result->is_paid=="1") selected @endif value="1">Paid</option>
-                            <option @if($result->is_paid=="0") selected @endif value="0">Free</option>
-                        </select>
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Payment:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-control form-control-lg" name="is_paid">
+                                <option @if($result->is_paid=="1") selected @endif value="1">Paid</option>
+                                <option @if($result->is_paid=="0") selected @endif value="0">Free</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Event Fee:</label>
-                        <input type="text" class="form-control" name="event_fee" value=" {{$result->event_fee}} ">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Fee:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" name="event_fee"
+                                   value=" {{$result->event_fee}} ">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Event image:</label>
-                        <input type="file" class="form-control" name="image" value=" {{$result->image}} ">
+                    <div class="form-group row">
+                        <div class="col-md-3">
+                            <label>Image:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="file" class="form-control" name="image" value=" {{$result->image}} ">
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-primary">Submit</button>

@@ -29,7 +29,7 @@
                         <th>Is Inside</th>
 
                         <th>Edit</th>
-                        <th>delete</th>
+                        <th>inside</th>
 
 
                     </tr>
