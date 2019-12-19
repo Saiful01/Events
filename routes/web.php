@@ -14,8 +14,8 @@
 use Illuminate\Support\Facades\App;
 
 Route::get('/', function () {
-    $result=\App\Event::get();
-    return view('pages.home')->with('result',$result);
+    $result = \App\Event::get();
+    return view('pages.home')->with('result', $result);
 });
 
 
@@ -28,7 +28,6 @@ Route::post('/admin/login/check', 'LoginController@loginCheck');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/admin/logout', 'LoginController@logout');
 //Login end Here
-
 
 
 Route::get('/pages/details/{id}', 'Controller@detail');
@@ -54,27 +53,14 @@ Route::get('/participant/edit/{id}', 'ParticipantController@edit');
 Route::post('/participant/update', 'ParticipantController@update');
 
 
-
 //admin section Event Registered
 Route::get('/EventReg/view', 'EventRegController@show');
 
+/*
+Route::get('/test', function () {
 
-
-
-
-
-
-
-//Route::get('/test', function(){
-//
-//
-//    $pdf = PDF::loadView('pages.ticket2');
+    return view('pages.ticket2');
+    //    $pdf = PDF::loadView('pages.ticket2');
 //    return $pdf->download('invoice.pdf');
-//
-//
-///*
-//
-//    $pdf->loadHTML('<h1>Test</h1>');
-//    return $pdf->stream();*/
-//});
 
+};*/

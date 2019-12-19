@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
+    <title>Ticket</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
 <div class="container">
     <h1 class="text-danger"> Event Ticket</h1>
 </div>
@@ -41,6 +42,47 @@
              <p>{{$participant['par_name'] }}</p>
                 <p>{{$participant['par_phone']}}</p>
                 <p>{{$participant['par_address']}}</p>
+{{--
+
+<br>
+<br>
+<br>
+
+<div class="ticket">
+    <div class="container">
+        <div class="col-md-8 mx-auto">
+            <div class="card rounded-0">
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Event Name</h4>
+
+                            <hr>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-7">
+                            Venue: daffodil International University
+                        </div>
+
+                        <div class="col-md-5">
+                            WEDNESDAY 28 DECEMBER 2014<br>
+                            08:55PM TO 12:00 AM
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                    </div>
+
+
+                </div>
+--}}
+
             </div>
         </div>
 
