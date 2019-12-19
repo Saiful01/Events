@@ -8,33 +8,47 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="jumbotron text-center">
-    <h1>My First Bootstrap Page</h1>
-    <p>Resize this responsive page to see the effect!</p>
-</div>
-
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <h3>Column 1</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    <h1 class="text-danger"> Event Ticket</h1>
+</div>
+<div class="container">
+    <div class="table table-bordered">
+        <div class="row">
+            <div class="col-md-9">
+                <h1>{{$result->event_title}}</h1>
+
+            </div>
+            <div class="col-md-3">
+                <img  src="/eventimg/{{$result->image}}" alt="Event image"
+                     width="100%" height="100px">
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <div class="row">
+            <div class="col-md-9">
+                <p>{{$result->event_venue}}</p>
+            </div>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 3</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+        <div class="row">
+            <div class="col-md-9">
+                <p>{{$result->event_date}}</p>
+            </div>
         </div>
+        <div class="row">
+            <div class="col-md-9">
+             <p>{{$participant['par_name'] }}</p>
+                <p>{{$participant['par_phone']}}</p>
+                <p>{{$participant['par_address']}}</p>
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+
 
 </body>
 </html>

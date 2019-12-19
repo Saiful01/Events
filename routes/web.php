@@ -48,6 +48,7 @@ Route::get('/event/participant/{id}', 'EventController@participant');
 //admin section participant
 Route::get('/participant/create', 'ParticipantController@create');
 Route::post('/participant/store', 'ParticipantController@store');
+Route::get('/pages/ticket2', 'ParticipantController@store');
 Route::get('/participant/view/{id}', 'ParticipantController@show');
 Route::get('/participant/edit/{id}', 'ParticipantController@edit');
 Route::post('/participant/update', 'ParticipantController@update');
@@ -60,16 +61,20 @@ Route::get('/EventReg/view', 'EventRegController@show');
 
 
 
-Route::get('/test', function(){
 
 
-    $pdf = PDF::loadView('pages.ticket2');
-    return $pdf->download('invoice.pdf');
 
 
-/*
-
-    $pdf->loadHTML('<h1>Test</h1>');
-    return $pdf->stream();*/
-});
+//Route::get('/test', function(){
+//
+//
+//    $pdf = PDF::loadView('pages.ticket2');
+//    return $pdf->download('invoice.pdf');
+//
+//
+///*
+//
+//    $pdf->loadHTML('<h1>Test</h1>');
+//    return $pdf->stream();*/
+//});
 

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Participant;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ParticipantController extends Controller
 {
@@ -37,6 +40,7 @@ class ParticipantController extends Controller
     public function store(Request $request)
     {
 
+          $qr_code=date( 'YmdHis');
         $participant_array = [
             'par_name' => $request['par_name'],
             'par_email' => $request['par_email'],
@@ -50,15 +54,32 @@ class ParticipantController extends Controller
             $event_register_array = [
                 'event_id' => $request['event_id'],
                 'par_id' => $participant_id,
+                'qr_code' => $qr_code
             ];
             DB::table('event_regs')->insert($event_register_array);
 
 
-            //TODO:: PDF Generate
+            $event_details=Event::where('event_id',$request['event_id'])->first();
+//return  view('pages.test')->with('result',$participant_array)->with('event',$event_register_array);
 
-           /* $pdf = PDF::loadView('pages.ticket2')->with(,'result),$result;
-            return $pdf->download('invoice.pdf');*/
 
+//TODO::pdf generate
+//return  storage_path();
+
+            try {
+                $pdf = PDF::loadView('pages.ticket2',[ 'participant'=>$participant_array, 'result'=>$event_details]);
+                 $pdf->save($qr_code.'.pdf');
+                //return $pdf->stream('invoice.pdf');
+
+                return;
+                return $pdf->stream('qr_code.pdf');
+
+            }
+            catch (\Exception $exception){
+                return $exception->getMessage();
+                return back()->with('failed', $exception->getMessage());
+
+            }
 
 
 
