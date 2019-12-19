@@ -19,6 +19,7 @@ class CreateEventRegsTable extends Migration
             $table->unsignedBigInteger('par_id');
             $table->boolean('is_paid')->default(false);
             $table->boolean('is_inside')->default(false);
+            $table->string('qr_code');
             $table->timestamps();
         });
     }

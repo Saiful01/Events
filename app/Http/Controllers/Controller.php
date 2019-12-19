@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Participant;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -28,4 +29,15 @@ class Controller extends BaseController
             ->with('result',$result);
 
     }
+//    public function test(){
+//
+//
+//
+//        $result=\App\Event::get();
+//
+//        $pdf = PDF::loadView('pages.ticket2',['result' => $result,]);
+//        //return $pdf->stream('invoice.pdf');
+//        return $pdf->download('motiur.pdf');
+//
+//    }
 }

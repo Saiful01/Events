@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Participant;
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -37,6 +39,7 @@ class ParticipantController extends Controller
     public function store(Request $request)
     {
 
+        $qr_code = date('YmdHis');
         $participant_array = [
             'par_name' => $request['par_name'],
             'par_email' => $request['par_email'],
@@ -50,19 +53,44 @@ class ParticipantController extends Controller
             $event_register_array = [
                 'event_id' => $request['event_id'],
                 'par_id' => $participant_id,
+                'qr_code' => $qr_code
             ];
             DB::table('event_regs')->insert($event_register_array);
 
 
-            //TODO:: PDF Generate
-
-           /* $pdf = PDF::loadView('pages.ticket2')->with(,'result),$result;
-            return $pdf->download('invoice.pdf');*/
+            $event_details = Event::where('event_id', $request['event_id'])->first();
+//return  view('pages.test')->with('result',$participant_array)->with('event',$event_register_array);
 
 
+//TODO::pdf generate
 
 
-            return back()->with('success', "Successfully Registered for this event");
+            return view('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details]);
+            try {
+                $pdf = PDF::loadView('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details]);
+
+
+                /* $pdf->save('/pdf/'.$qr_code . '.pdf');
+                 //return $pdf->stream('invoice.pdf');
+
+                 return;
+                 return $pdf->stream('qr_code.pdf');*/
+
+
+                $path = public_path('pdf/');
+                $fileName = $qr_code . '.' . 'pdf';
+                $pdf->save($path . '/' . $fileName);
+
+
+                //TODO::Attach and sent to email
+                //return $pdf->download($fileName);
+                return back()->with('success', "Successfully Registered for this event");
+
+            } catch (\Exception $exception) {
+
+                return back()->with('failed', $exception->getMessage());
+
+            }
 
 
         } catch (\Exception $exception) {
@@ -80,7 +108,7 @@ class ParticipantController extends Controller
     public function show($event_id)
     {
 
-        $results= DB::table('event_regs')
+        $results = DB::table('event_regs')
             ->join('participants', 'participants.par_id', '=', 'event_regs.par_id')
             ->where('event_regs.event_id', $event_id)
             ->get();
@@ -119,17 +147,17 @@ class ParticipantController extends Controller
         ];
 
 
-    // return  $request->all();
-try {
+        // return  $request->all();
+        try {
 
-Participant::where('par_id', $request['par_id'])->update($request->all());
-return back()->with('success', "Successfully Updated");
+            Participant::where('par_id', $request['par_id'])->update($request->all());
+            return back()->with('success', "Successfully Updated");
 
-} catch (\Exception $exception) {
-    return $exception->getMessage();
+        } catch (\Exception $exception) {
+            return $exception->getMessage();
 
-    return back()->with('failed', $exception->getMessage());
-}
+            return back()->with('failed', $exception->getMessage());
+        }
     }
 
     /**
