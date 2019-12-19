@@ -23,7 +23,7 @@
 
             </div>
             <div class="col-md-3">
-                <img  src="/eventimg/{{$result->image}}" alt="Event image"
+                <img src="/eventimg/{{$result->image}}" alt="Event image"
                      width="100%" height="100px">
             </div>
         </div>
@@ -39,14 +39,15 @@
         </div>
         <div class="row">
             <div class="col-md-9">
-             <p>{{$participant['par_name'] }}</p>
+                <p>{{$participant['par_name'] }}</p>
                 <p>{{$participant['par_phone']}}</p>
                 <p>{{$participant['par_address']}}</p>
-{{--
 
-<br>
-<br>
-<br>
+
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="ticket">
     <div class="container">
@@ -81,15 +82,13 @@
 
 
                 </div>
---}}
+
 
             </div>
         </div>
 
     </div>
 </div>
-
-
 
 
 </body>
