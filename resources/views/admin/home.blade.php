@@ -27,14 +27,15 @@
                 <div class="col-md-4">
                     <button class="btn btn-success btn-big btn-block">
                         Total Participant
-                        <p style="margin-top: -65px">500</p>
+                        <p style="margin-top: -65px">{{ $par_count}}</p>
                     </button>
                 </div>
                 <div class="col-md-4">
                     <button class="btn btn-danger btn-big btn-block">
                         Total Event
 
-                        <p style="margin-top: -65px">50</p>
+                        <p style="margin-top: -65px">{{ $event_count}}</p>
+
 
                     </button>
 

@@ -76,8 +76,11 @@ class EventController extends Controller
         try {
             Event::create($array);
 
+
             return redirect()->to('/event/view')->with('success', "Successfully Saved");
-        } catch (\Exception $exception) {
+
+        }
+        catch (\Exception $exception) {
 
             return $exception->getMessage();
             return back()->with('failed', $exception->getMessage());

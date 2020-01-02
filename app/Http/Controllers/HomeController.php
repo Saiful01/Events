@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
+use App\Participant;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
@@ -19,6 +21,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+         $event_count = Event::count();
+         $par_count = Participant::count();
+        return view('admin.home')
+            ->with('event_count',$event_count)
+            ->with('par_count',$par_count);
     }
 }
