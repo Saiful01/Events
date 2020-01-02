@@ -182,7 +182,7 @@ class EventController extends Controller
     {
 
 
-        return $id;
+        //return $id;
         $result = DB::table('event_regs')
             ->where('event_id', $id)
             ->leftjoin('participants', 'event_regs.par_id', '=', 'participants.par_id')

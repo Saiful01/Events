@@ -17,79 +17,32 @@
 </div>
 <div class="container">
     <div class="table table-bordered">
-        <div class="row">
-            <div class="col-md-9">
-                <h1>{{$result->event_title}}</h1>
+        <h1><b>Event:</b>{{$result->event_title}}</h1>
+        <table>
+            <tr>
+                <td>
 
-            </div>
-            <div class="col-md-3">
-                <img src="/eventimg/{{$result->image}}" alt="Event image"
-                     width="100%" height="100px">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <p>{{$result->event_venue}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <p>{{$result->event_date}}</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <p>{{$participant['par_name'] }}</p>
-                <p>{{$participant['par_phone']}}</p>
-                <p>{{$participant['par_address']}}</p>
+                    <p><b>Venue:</b>{{$result->event_venue}}</p>
+                    <p><b>Date:</b>{{$result->event_date}}</p>
+                </td>
+                <td>
+                    <p><b>Name:</b>{{$participant['par_name'] }}</p>
+                    <p><b>Phone:</b>{{$participant['par_phone']}}</p>
+                    <p><b>Address:</b>{{$participant['par_address']}}</p>
+                </td>
+                <td>
 
+{{--                    <img src="/eventimg/{{$result->image}}" />--}}
 
-            </div>
-        </div>
-    </div>
-</div>
+                    <img src="asset('/eventimg/{{$result->image}}')" alt="Logo" height="75px">
 
-<div class="ticket">
-    <div class="container">
-        <div class="col-md-8 mx-auto">
-            <div class="card rounded-0">
-
-                <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Event Name</h4>
-
-                            <hr>
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-7">
-                            Venue: daffodil International University
-                        </div>
-
-                        <div class="col-md-5">
-                            WEDNESDAY 28 DECEMBER 2014<br>
-                            08:55PM TO 12:00 AM
-                        </div>
-                    </div>
-
-                    <div class="row">
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-        </div>
+                    {!! QrCode::size(300)->generate($qr_code); !!}
+                </td>
+            </tr>
+        </table>
 
     </div>
 </div>
-
 
 </body>
 </html>
