@@ -36,7 +36,7 @@
 
                     <img src="asset('/eventimg/{{$result->image}}')" alt="Logo" height="75px">
 
-                    {!! QrCode::size(300)->generate($qr_code); !!}
+                    {!! QrCode:: png size(300)->generate($qr_code); !!}
                 </td>
             </tr>
         </table>
