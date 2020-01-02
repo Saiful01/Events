@@ -12,11 +12,14 @@
 */
 
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Mail;
 
 Route::get('/', function () {
     $result = \App\Event::get();
     return view('pages.home')->with('result', $result);
 });
+
+
 
 
 Auth::routes();

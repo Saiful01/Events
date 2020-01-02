@@ -7,6 +7,9 @@ use App\Participant;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\QrCode;
+
 
 class ParticipantController extends Controller
 {
@@ -36,7 +39,7 @@ class ParticipantController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $domPdf)
     {
 
         $qr_code = date('YmdHis');
@@ -59,15 +62,16 @@ class ParticipantController extends Controller
 
 
             $event_details = Event::where('event_id', $request['event_id'])->first();
-//return  view('pages.test')->with('result',$participant_array)->with('event',$event_register_array);
+//return  view('pages.ticket2')->with('participant',$participant_array)->with('qr_code',$event_register_array)->with('result',$event_details);
 
 
 //TODO::pdf generate
 
 
-            return view('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details]);
+           //return view('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details,'qr_code' =>$qr_code]);
             try {
-                $pdf = PDF::loadView('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details]);
+
+                $pdf = PDF::loadView('pages.ticket2', ['participant' => $participant_array, 'result' => $event_details,'qr_code' =>$qr_code]);
 
 
                 /* $pdf->save('/pdf/'.$qr_code . '.pdf');
@@ -82,8 +86,25 @@ class ParticipantController extends Controller
                 $pdf->save($path . '/' . $fileName);
 
 
+
                 //TODO::Attach and sent to email
                 //return $pdf->download($fileName);
+                $data = array(
+                    'name' => $request->par_name,
+                    'email' => $request ->par_email,
+                    'file' => "$qr_code.pdf",
+                    'body'=>""
+                );
+
+                Mail::send('mail',$data,function ($message) use ($data, $qr_code, $pdf){
+
+                    $message->to($data['email']);
+
+                    $message-> subject('Welcome message');
+
+
+                   $message->attachData($pdf->output(), ($data['file']));
+                });
                 return back()->with('success', "Successfully Registered for this event");
 
             } catch (\Exception $exception) {
