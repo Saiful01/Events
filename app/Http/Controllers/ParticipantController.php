@@ -39,7 +39,7 @@ class ParticipantController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $domPdf)
+    public function store(Request $request)
     {
 
         $qr_code = date('YmdHis');
