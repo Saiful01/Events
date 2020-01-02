@@ -19,8 +19,9 @@ class CreateEventsTable extends Migration
             $table->text('event_details');
             $table->dateTime('event_date');
             $table->string('event_venue');
+            $table->string('event_venue_address');
             $table->boolean('is_paid')->default(false);
-            $table->double('event_fee');
+            $table->double('event_fee')->default(0);
             $table->string('image')->nullable();
             $table->timestamps();
         });
